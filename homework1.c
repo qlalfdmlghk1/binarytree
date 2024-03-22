@@ -18,27 +18,27 @@ threadedPointer* insucc(threadedPointer* tree) {
             temp = temp->leftChild;
         }
     }
-    if (temp == NULL) { // temp°¡ null pointerÀÎ °æ¿ì
-        return tree; // tree¸¦ ¹İÈ¯
+    if (temp == NULL) { // tempê°€ null pointerì¸ ê²½ìš°
+        return tree; // treeë¥¼ ë°˜í™˜
     }
     else {
         return temp;
     }
 }
 
-void tinorder(threadedPointer* tree) { // tree ³ëµåÀÇ ÈÄ¼Ó³ëµåtempÀÇ°ªÃâ·ÂÇÏ±â
+void tinorder(threadedPointer* tree) { // tree ë…¸ë“œì˜ í›„ì†ë…¸ë“œtempì˜ê°’ì¶œë ¥í•˜ê¸°
     threadedPointer* temp = tree;
     for (; ;) {
-        temp = insucc(temp); // ÁßÀ§ÈÄ¼ÓÀÚÃ£±â
+        temp = insucc(temp); // ì¤‘ìœ„í›„ì†ìì°¾ê¸°
         if (temp == tree) break;
-        printf("%3c", temp->data) ; // Ã£¾Æ³½ÁßÀ§ÈÄ¼ÓÀÚ°ª Ãâ·Â
+        printf("%3c", temp->data) ; // ì°¾ì•„ë‚¸ì¤‘ìœ„í›„ì†ìê°’ ì¶œë ¥
         if (temp->rightChild == NULL) break ;
         
     }
 }
 
 int main() {
-    // »ùÇÃ Æ®¸® »ı¼º
+    // ìƒ˜í”Œ íŠ¸ë¦¬ ìƒì„±
     threadedPointer* nodeA = (threadedPointer*)malloc(sizeof(threadedPointer));
     threadedPointer* nodeB = (threadedPointer*)malloc(sizeof(threadedPointer));
     threadedPointer* nodeC = (threadedPointer*)malloc(sizeof(threadedPointer));
@@ -90,10 +90,10 @@ int main() {
     nodeG->leftThread = 1;
     nodeG->rightThread = 1;
 
-    // ¼øÈ¸ ½ÃÀÛ
-    threadedPointer* startNode = nodeD; // ½ÃÀÛ ³ëµå ¼³Á¤
+    // ìˆœíšŒ ì‹œì‘
+    threadedPointer* startNode = nodeD; // ì‹œì‘ ë…¸ë“œ ì„¤ì •
     printf("%3c", startNode->data);
-    tinorder(startNode); // ÁßÀ§¼øÈ¸ ÇÔ¼ö È£Ãâ
+    tinorder(startNode); // ì¤‘ìœ„ìˆœíšŒ í•¨ìˆ˜ í˜¸ì¶œ
     return 0;
 
 }
