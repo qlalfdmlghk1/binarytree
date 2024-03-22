@@ -20,26 +20,26 @@ threadedPointer* insucc(threadedPointer* tree) {
             temp = temp->leftChild;
         }
     }
-    if (temp == NULL) { // temp°¡ null pointerÀÎ °æ¿ì
-        return tree; // tree¸¦ ¹İÈ¯
+    if (temp == NULL) { // tempê°€ null pointerì¸ ê²½ìš°
+        return tree; // treeë¥¼ ë°˜í™˜
     }
     else {
         return temp;
     }
 }
 
-void tinorder(threadedPointer* tree) { // tree ³ëµåÀÇ ÈÄ¼Ó³ëµåtempÀÇ°ªÃâ·ÂÇÏ±â
+void tinorder(threadedPointer* tree) { // tree ë…¸ë“œì˜ í›„ì†ë…¸ë“œtempì˜ê°’ì¶œë ¥í•˜ê¸°
     threadedPointer* temp = tree;
     for (; ;) {
-        temp = insucc(temp); // ÁßÀ§ÈÄ¼ÓÀÚÃ£±â
+        temp = insucc(temp); // ì¤‘ìœ„í›„ì†ìì°¾ê¸°
         if (temp == tree) break;
-        printf("%3c", temp->data) ; // Ã£¾Æ³½ÁßÀ§ÈÄ¼ÓÀÚ°ª Ãâ·Â
+        printf("%3c", temp->data) ; // ì°¾ì•„ë‚¸ì¤‘ìœ„í›„ì†ìê°’ ì¶œë ¥
         if (temp->rightChild == NULL) break ;
         
     }
 }
 
-void insert_Right(threadedPointer *parent, threadedPointer *child) {// ½º·¹µå ÀÌÁø Æ®¸®¿¡¼­ child¸¦ parentÀÇ ¿À¸¥ÂÊ ÀÚ½ÄÀ¸·Î »ğÀÔ
+void insert_Right(threadedPointer *parent, threadedPointer *child) {// ìŠ¤ë ˆë“œ ì´ì§„ íŠ¸ë¦¬ì—ì„œ childë¥¼ parentì˜ ì˜¤ë¥¸ìª½ ìì‹ìœ¼ë¡œ ì‚½ì…
 	threadedPointer *temp;
 	child->rightChild = parent->rightChild;
 	child->rightThread = parent->rightThread;
@@ -47,14 +47,14 @@ void insert_Right(threadedPointer *parent, threadedPointer *child) {// ½º·¹µå ÀÌ
 	child->leftThread = 1;
 	parent->rightChild = child;
 	parent->rightThread = 0;
-	if ( !child->rightThread ) { // parentÀÇ ¿À¸¥ÂÊÀÚ½ÄÀÌ ÀÖ¾ú´Ù¸é
-		temp = insucc(child); // childÀÇ ÈÄ¼ÓÀÚÃ£±â
-		temp->leftChild = child; // ÁßÀ§ÈÄ¼ÓÀÚ°¡child¸¦ °¡¸®Å´
+	if ( !child->rightThread ) { // parentì˜ ì˜¤ë¥¸ìª½ìì‹ì´ ìˆì—ˆë‹¤ë©´
+		temp = insucc(child); // childì˜ í›„ì†ìì°¾ê¸°
+		temp->leftChild = child; // ì¤‘ìœ„í›„ì†ìê°€childë¥¼ ê°€ë¦¬í‚´
 	}
 }
 
 int main() {
-    // »ùÇÃ Æ®¸® »ı¼º
+    // ìƒ˜í”Œ íŠ¸ë¦¬ ìƒì„±
     threadedPointer* nodeA = (threadedPointer*)malloc(sizeof(threadedPointer));
     threadedPointer* nodeB = (threadedPointer*)malloc(sizeof(threadedPointer));
     threadedPointer* nodeC = (threadedPointer*)malloc(sizeof(threadedPointer));
@@ -110,12 +110,12 @@ int main() {
     nodeG->leftThread = 1;
     nodeG->rightThread = 1;
 	
-	insert_Right(nodeA, child); // nodeCÀÇ ¿À¸¥ÂÊ ÀÚ½ÄÀ¸·Î child »ğÀÔ
+	insert_Right(nodeA, child); // nodeCì˜ ì˜¤ë¥¸ìª½ ìì‹ìœ¼ë¡œ child ì‚½ì…
 	
-    // ¼øÈ¸ ½ÃÀÛ
-    threadedPointer* startNode = nodeD; // ½ÃÀÛ ³ëµå ¼³Á¤
+    // ìˆœíšŒ ì‹œì‘
+    threadedPointer* startNode = nodeD; // ì‹œì‘ ë…¸ë“œ ì„¤ì •
     printf("%3c", startNode->data);
-    tinorder(startNode); // ÁßÀ§¼øÈ¸ ÇÔ¼ö È£Ãâ
+    tinorder(startNode); // ì¤‘ìœ„ìˆœíšŒ í•¨ìˆ˜ í˜¸ì¶œ
     return 0;
 
 }
